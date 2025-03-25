@@ -1,34 +1,53 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import React, { useReducer } from 'react'
+import { ProductList } from './components/ProductList'
+import { Cart } from './components/Cart'
+import { 
+  cartReducer, 
+  initialState, 
+  ADD_PRODUCT, 
+  REMOVE_PRODUCT, 
+  CLEAR_CART 
+} from './reducers/cartReducer'
 import './App.css'
 
+// Lista simple de productos
+const products = [
+  { id: 1, name: 'Laptop', price: 3500 },
+  { id: 2, name: 'Smartphone', price: 750 },
+  { id: 3, name: 'Tablet', price: 300 },
+  { id: 4, name: 'Headphones', price: 350 },
+  { id: 5, name: 'Smartwatch', price: 275 }
+]
+
 function App() {
-  const [count, setCount] = useState(0)
+  const [cart, dispatch] = useReducer(cartReducer, initialState)
+
+  const handleAddToCart = (product) => {
+    dispatch({ type: ADD_PRODUCT, payload: product })
+  }
+
+  const handleRemoveFromCart = (productId) => {
+    dispatch({ type: REMOVE_PRODUCT, payload: productId })
+  }
+
+  const handleClearCart = () => {
+    dispatch({ type: CLEAR_CART })
+  }
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <div className="app-container">
+      <div className="shopping-app">
+        <ProductList 
+          products={products} 
+          onAddToCart={handleAddToCart} 
+        />
+        <Cart 
+          cart={cart}
+          onRemoveFromCart={handleRemoveFromCart}
+          onClearCart={handleClearCart}
+        />
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    </div>
   )
 }
 
