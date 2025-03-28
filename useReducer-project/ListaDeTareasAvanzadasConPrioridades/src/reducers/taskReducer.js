@@ -1,4 +1,3 @@
-// src/reducers/taskReducer.js
 export const initialState = {
     tasks: [],
     filter: 'all'

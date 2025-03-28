@@ -1,6 +1,6 @@
 import React from 'react';
 import { useExpenseContext } from '../context/ExpenseContext';
-import './ExpenseSummary.css';
+import '../styles/ExpenseSummary.css';
 
 export const ExpenseSummary = () => {
   const { totalExpense = 0, categorySummary = [] } = useExpenseContext();

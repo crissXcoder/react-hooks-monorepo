@@ -1,4 +1,3 @@
-// src/components/TaskFilter.jsx
 import React from 'react';
 import { useTaskContext } from '../context/TaskContext';
 import '../styles/GlobalStyles.css';

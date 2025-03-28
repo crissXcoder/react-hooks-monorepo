@@ -1,7 +1,14 @@
-// src/context/TaskContext.jsx
-import React, { createContext, useContext, useReducer, useEffect } from 'react';
+import React, { createContext, useContext, useReducer, useEffect, useMemo } from 'react';
 import { taskReducer, initialState, ACTION_TYPES } from '../reducers/taskReducer';
 import { useLocalStorage } from '../hooks/useLocalStorage';
+import { 
+  generateTaskId, 
+  isValidTask, 
+  sortTasks, 
+  filterTasks, 
+  getTaskStats, 
+  searchTasks 
+} from '../utils/taskHelpers';
 
 const TaskContext = createContext();
 
@@ -9,7 +16,7 @@ export const TaskProvider = ({ children }) => {
   const [state, dispatch] = useReducer(taskReducer, initialState);
   const [storedTasks, setStoredTasks] = useLocalStorage('tasks', []);
 
-  // Sync with localStorage
+  // Sync stored tasks with initial state
   useEffect(() => {
     if (storedTasks.length) {
       dispatch({ 
@@ -19,19 +26,32 @@ export const TaskProvider = ({ children }) => {
     }
   }, []);
 
+  // Update localStorage when tasks change
   useEffect(() => {
     setStoredTasks(state.tasks);
   }, [state.tasks]);
 
-  const addTask = (task) => {
+  // Task Management Actions
+  const addTask = (taskData) => {
+    // Validate task before adding
+    if (!isValidTask(taskData)) {
+      console.warn('Invalid task data');
+      return false;
+    }
+
+    const newTask = {
+      ...taskData,
+      id: generateTaskId(),
+      createdAt: Date.now(),
+      completed: false
+    };
+
     dispatch({
       type: ACTION_TYPES.ADD_TASK,
-      payload: {
-        ...task,
-        id: Date.now(),
-        completed: false
-      }
+      payload: newTask
     });
+
+    return true;
   };
 
   const removeTask = (id) => {
@@ -62,27 +82,54 @@ export const TaskProvider = ({ children }) => {
     });
   };
 
-  const filteredTasks = state.tasks.filter(task => {
-    if (state.filter === 'completed') return task.completed;
-    if (state.filter === 'active') return !task.completed;
-    return true;
-  });
+  // Memoized and processed tasks
+  const processedTasks = useMemo(() => {
+    // Apply filtering
+    const filteredTasks = filterTasks(state.tasks, state.filter);
+    
+    // Sort tasks
+    const sortedTasks = sortTasks(filteredTasks, 'priority');
+
+    return sortedTasks;
+  }, [state.tasks, state.filter]);
+
+  // Additional computed values
+  const taskStats = useMemo(() => {
+    return getTaskStats(state.tasks);
+  }, [state.tasks]);
+
+  // Search functionality
+  const searchTasksByTitle = (searchTerm) => {
+    return searchTasks(processedTasks, searchTerm);
+  };
+
+  // Context value with all methods and computed properties
+  const contextValue = {
+    // Tasks and filtering
+    tasks: processedTasks,
+    allTasks: state.tasks,
+    filter: state.filter,
+
+    // Task management actions
+    addTask,
+    removeTask,
+    toggleTask,
+    changePriority,
+    setFilter,
+
+    // Additional utilities
+    searchTasks: searchTasksByTitle,
+    taskStats,
+  };
 
   return (
-    <TaskContext.Provider value={{
-      tasks: filteredTasks,
-      addTask,
-      removeTask,
-      toggleTask,
-      changePriority,
-      setFilter,
-      filter: state.filter
-    }}>
+    <TaskContext.Provider value={contextValue}>
       {children}
     </TaskContext.Provider>
   );
 };
 
+// Custom hook for using the TaskContext
 export const useTaskContext = () => {
   const context = useContext(TaskContext);
   if (!context) {

@@ -1,6 +1,6 @@
 import React from 'react';
 import { useExpenseContext } from '../context/ExpenseContext';
-import './ExpenseChart.css';
+import '../styles/ExpenseChart.css';
 
 export const ExpenseChart = () => {
   const { categorySummary = [] } = useExpenseContext();

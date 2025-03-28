@@ -113,6 +113,7 @@ body {
     align-items: center;
     padding: 5px 0;
     border-bottom: 1px solid #f1f1f1;
+    color: black;
   }
   
   .history-item span {

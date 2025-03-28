@@ -1,5 +1,6 @@
 import React from 'react';
 import { useUnitConverter } from '../hooks/useUnitConverter';
+import { UnitSelector } from './UnitSelector';
 import { ConversionHistory } from './ConversionHistory';
 import { CONVERSION_TYPES, getAvailableUnits } from '../utils/conversionRules';
 import '../styles/UnitConverter.css';
@@ -58,14 +59,12 @@ export function UnitConverter() {
               onChange={(e) => setInputValue(e.target.value)}
               placeholder="Enter value"
             />
-            <select 
-              value={fromUnit} 
-              onChange={(e) => setFromUnit(e.target.value)}
-            >
-              {getAvailableUnits(conversionType).map(unit => (
-                <option key={unit} value={unit}>{unit}</option>
-              ))}
-            </select>
+            <UnitSelector 
+              conversionType={conversionType}
+              currentUnit={fromUnit}
+              onUnitChange={setFromUnit}
+              excludeUnit={toUnit}
+            />
           </div>
 
           <div className="swap-icon">↔️</div>
@@ -77,14 +76,12 @@ export function UnitConverter() {
               readOnly
               placeholder="Converted value"
             />
-            <select 
-              value={toUnit} 
-              onChange={(e) => setToUnit(e.target.value)}
-            >
-              {getAvailableUnits(conversionType).map(unit => (
-                <option key={unit} value={unit}>{unit}</option>
-              ))}
-            </select>
+            <UnitSelector 
+              conversionType={conversionType}
+              currentUnit={toUnit}
+              onUnitChange={setToUnit}
+              excludeUnit={fromUnit}
+            />
           </div>
         </div>
 

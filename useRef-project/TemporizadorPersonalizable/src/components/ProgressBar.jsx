@@ -1,4 +1,3 @@
-// src/components/ProgressBar.jsx
 import React from 'react';
 import '../styles/Timer.css';
 

@@ -1,4 +1,3 @@
-// src/components/AdminPanel.jsx
 import React from 'react';
 import { users } from '../data/users';
 

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useExpenseContext } from '../context/ExpenseContext';
-import './ExpenseForm.css';
+import '../styles/ExpenseForm.css';
 
 export const ExpenseForm = () => {
   const { addExpense } = useExpenseContext();
