@@ -1,0 +1,65 @@
+/* src/styles/Timer.css */
+.timer-container {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    padding: 30px;
+    width: 100%;
+    max-width: 500px;
+    text-align: center;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+  }
+  
+  .timer-display {
+    font-size: 4rem;
+    margin-bottom: 20px;
+    color: white;
+    transition: all 0.3s ease;
+  }
+  
+  .timer-display.finished {
+    color: #50c878;
+    transform: scale(1.1);
+  }
+  
+  .progress-container {
+    width: 100%;
+    height: 10px;
+    background-color: rgba(255,255,255,0.2);
+    border-radius: 5px;
+    margin-bottom: 20px;
+    overflow: hidden;
+  }
+  
+  .progress-bar {
+    height: 100%;
+    transition: width 1s linear;
+  }
+  
+  .timer-controls {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .input-group {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .seconds-input, .set-timer-btn,
+  .start-btn, .pause-btn, .reset-btn {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    background-color: #4a90e2;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .control-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+  }

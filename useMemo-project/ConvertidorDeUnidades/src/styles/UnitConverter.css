@@ -1,0 +1,120 @@
+body {
+    background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Arial', sans-serif;
+  }
+  
+  .unit-converter-container {
+    width: 100%;
+    max-width: 500px;
+  }
+  
+  .converter-card {
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+  }
+  
+  h1 {
+    text-align: center;
+    color: #2c3e50;
+    margin-bottom: 20px;
+  }
+  
+  .conversion-type-selector select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #e0e0e0;
+    border-radius: 5px;
+  }
+  
+  .conversion-inputs {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .input-group {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .input-group input {
+    flex-grow: 1;
+    padding: 10px;
+    border: 1px solid #e0e0e0;
+    border-radius: 5px;
+  }
+  
+  .input-group select {
+    width: 100px;
+    border: 1px solid #e0e0e0;
+    border-radius: 5px;
+  }
+  
+  .swap-icon {
+    text-align: center;
+    font-size: 1.5em;
+  }
+  
+  .converter-actions {
+    margin-top: 20px;
+    text-align: center;
+  }
+  
+  .converter-actions button {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .converter-actions button:disabled {
+    background-color: #bdc3c7;
+    cursor: not-allowed;
+  }
+  
+  .conversion-history {
+    margin-top: 20px;
+    border-top: 1px solid #e0e0e0;
+    padding-top: 15px;
+  }
+  
+  .history-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  .history-header h3 {
+    margin: 0;
+    color: #2c3e50;
+  }
+  
+  .history-header button {
+    background: none;
+    border: none;
+    color: #e74c3c;
+    cursor: pointer;
+  }
+  
+  .history-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 0;
+    border-bottom: 1px solid #f1f1f1;
+  }
+  
+  .history-item span {
+    margin: 0 5px;
+  }

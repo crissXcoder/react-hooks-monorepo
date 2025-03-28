@@ -1,0 +1,110 @@
+body {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #3494E6, #2196F3, #1E88E5);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+  }
+  
+  .pokemon-search-container {
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 15px;
+    padding: 30px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    width: 90%;
+    max-width: 800px;
+  }
+  
+  .search-form {
+    display: flex;
+    margin-bottom: 20px;
+  }
+  
+  .search-input {
+    flex-grow: 1;
+    padding: 10px;
+    border: 2px solid #2196F3;
+    border-radius: 5px 0 0 5px;
+    background-color: rgba(255, 255, 255, 0.9);
+  }
+  
+  .search-button {
+    background-color: #2196F3;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .search-button:hover {
+    background-color: #1976D2;
+  }
+  
+  .pokemon-card {
+    background-color: rgba(255, 255, 255, 0.3);
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .pokemon-details {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+  
+  .pokemon-image {
+    max-width: 300px;
+    animation: float 2s ease-in-out infinite;
+  }
+  
+  .pokemon-types {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 15px;
+  }
+  
+  .type {
+    padding: 5px 10px;
+    border-radius: 5px;
+    color: white;
+    font-weight: bold;
+  }
+  
+  .water { background-color: #3498db; }
+  .fire { background-color: #e74c3c; }
+  .grass { background-color: #2ecc71; }
+  .electric { background-color: #f1c40f; }
+  .psychic { background-color: #9b59b6; }
+  
+  .error-message {
+    color: #e74c3c;
+    text-align: center;
+    margin-top: 15px;
+  }
+
+  .loading-spinner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 1.2rem;
+    margin-top: 20px;
+    animation: pulse 1.5s infinite;
+  }
+  
+  .search-button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+  
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+  }

@@ -1,0 +1,48 @@
+.expense-chart {
+    background-color: #f0f8ff;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .expense-chart h2 {
+    text-align: center;
+    color: #1a5f7a;
+    margin-bottom: 20px;
+    font-size: 24px;
+  }
+  
+  .chart-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    height: 250px;
+    padding: 0 10px;
+  }
+  
+  .chart-bar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 60px;
+  }
+  
+  .bar {
+    width: 40px;
+    background-color: #4a90e2;
+    transition: height 0.5s ease;
+  }
+  
+  .category-label {
+    margin-top: 10px;
+    font-size: 12px;
+    color: #2c3e50;
+    text-align: center;
+  }
+  
+  .amount-label {
+    margin-top: 5px;
+    font-size: 10px;
+    color: #7f8c8d;
+    text-align: center;
+  }

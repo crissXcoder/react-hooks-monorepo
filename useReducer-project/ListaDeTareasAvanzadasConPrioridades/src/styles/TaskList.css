@@ -1,0 +1,80 @@
+/* src/styles/TaskList.css */
+.task-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-height: 400px;
+    overflow-y: auto;
+  }
+  
+  .task-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.2);
+    padding: 10px;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+  }
+  
+  .task-item.completed {
+    opacity: 0.6;
+    text-decoration: line-through;
+  }
+  
+  .task-content {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .task-checkbox {
+    accent-color: #4a90e2;
+  }
+  
+  .task-title {
+    color: white;
+  }
+  
+  .task-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .priority-select {
+    background-color: rgba(74, 144, 226, 0.2);
+    color: white;
+    border: none;
+    padding: 5px;
+    border-radius: 3px;
+  }
+  
+  .remove-task-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    transition: transform 0.2s;
+  }
+  
+  .remove-task-btn:hover {
+    transform: scale(1.2);
+  }
+  
+  .no-tasks {
+    text-align: center;
+    color: rgba(255, 255, 255, 0.7);
+  }
+  
+  .priority-high {
+    border-left: 4px solid #ff4d4d;
+  }
+  
+  .priority-medium {
+    border-left: 4px solid #ffa500;
+  }
+  
+  .priority-low {
+    border-left: 4px solid #4caf50;
+  }

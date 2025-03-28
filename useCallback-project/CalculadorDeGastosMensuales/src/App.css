@@ -1,0 +1,62 @@
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #f4f7f9;
+  margin: 0;
+  padding: 0;
+}
+
+.expense-tracker-app {
+  min-height: 100vh;
+  background: linear-gradient(to right, #e6f2ff, #b3d9ff);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  width: 90%;
+  max-width: 1200px;
+  background-color: white;
+  border-radius: 15px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  padding: 30px;
+}
+
+h1 {
+  text-align: center;
+  color: #1a5f7a;
+  margin-bottom: 30px;
+}
+
+.content-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.form-section {
+  grid-column: 1;
+}
+
+.info-section {
+  grid-column: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.list-section {
+  grid-column: 1 / -1;
+}
+
+@media (max-width: 768px) {
+  .content-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .form-section, 
+  .info-section, 
+  .list-section {
+    grid-column: 1;
+  }
+}
