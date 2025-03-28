@@ -2,18 +2,26 @@
 export const users = [
     {
       id: 1,
-      username: 'admin',
-      password: 'admin123',
+      username: 'Criss',
+      password: 'criss123',
       role: 'admin',
       name: 'Admin User',
-      email: 'admin@example.com'
+      email: 'criss@admin.com'
     },
     {
       id: 2,
-      username: 'user',
-      password: 'user123',
+      username: 'Alex',
+      password: 'alex123',
+      role: 'admin',
+      name: 'Admin User',
+      email: 'alex@admin.com'
+    },
+    {
+      id: 3,
+      username: 'Danny',
+      password: 'danny123',
       role: 'user',
       name: 'Regular User',
-      email: 'user@example.com'
+      email: 'usuario@ejemplo.com'
     }
   ];
